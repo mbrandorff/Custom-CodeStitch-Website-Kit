@@ -36,12 +36,84 @@
 
     --headerFont: "Roboto", Arial, sans-serif;
     --bodyFont: "Roboto", Arial, sans-serif;
-
-    line-height: 1.5;
   }
 
+  /* Custom CSS Reset https://www.joshwcomeau.com/css/custom-css-reset/ */
+  /* 1. Use a more-intuitive box-sizing model */
   html {
     box-sizing: border-box;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
+
+  /* 2. Remove default margin */
+  * {
+    margin: 0;
+  }
+
+  /* 3. Enable keyword animations */
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      interpolate-size: allow-keywords;
+    }
+  }
+
+  body {
+    /* 4. Add accessible line-height */
+    line-height: 1.5;
+    /* 5. Improve text rendering */
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* 6. Improve media defaults */
+  img,
+  picture,
+  video,
+  canvas,
+  svg {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* 7. Inherit fonts for form controls */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+  }
+
+  /* 8. Avoid text overflows */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    overflow-wrap: break-word;
+  }
+
+  /* 9. Improve line wrapping */
+  p {
+    text-wrap: pretty;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    text-wrap: balance;
+  }
+
+  /* 10. Create a root stacking context */
+  #root,
+  #__next {
+    isolation: isolate;
   }
 
   html,
@@ -53,17 +125,6 @@
     font-size: 100%;
     transition: background-color 0.3s;
     color: var(--bodyTextColor);
-  }
-
-  *,
-  *:before,
-  *:after,
-  *::before,
-  *::after {
-    /* prevents padding from affecting height and width */
-    box-sizing: inherit;
-    margin: 0;
-    padding: 0;
   }
 
   .cs-topper {
@@ -97,6 +158,66 @@
     max-width: 40.625rem;
     margin: 0;
     color: var(--bodyTextColor);
+  }
+}
+
+/* Base Element Styles */
+@media only screen and (min-width: 0rem) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--headerFont);
+    line-height: 1.2em;
+    color: var(--headerColor);
+    font-size: inherit;
+    font-weight: inherit;
+  }
+
+  p,
+  li,
+  a {
+    font-size: calc(16 / 16 * 1rem);
+    line-height: 1.5em;
+  }
+
+  p,
+  li {
+    color: var(--bodyTextColor);
+
+    a {
+      color: var(--primary);
+    }
+  }
+
+  a,
+  button {
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  ol[role="list"],
+  ul[role="list"] {
+    list-style: none;
+    padding-inline: 0;
+  }
+
+  body.dark-mode {
+    background-color: var(--dark);
+
+    p,
+    li,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: #fff;
+    }
   }
 }
 
@@ -246,71 +367,6 @@
 
   .cs-hide-on-desktop {
     display: none !important;
-  }
-}
-
-/* Base Element Styles */
-@media only screen and (min-width: 0rem) {
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: var(--headerFont);
-    line-height: 1.2em;
-    color: var(--headerColor);
-    font-size: inherit;
-    font-weight: inherit;
-  }
-
-  p,
-  li,
-  a {
-    font-size: calc(16 / 16 * 1rem);
-    line-height: 1.5em;
-  }
-
-  p,
-  li {
-    color: var(--bodyTextColor);
-
-    a {
-      color: var(--primary);
-    }
-  }
-
-  a,
-  button {
-    &:hover {
-      cursor: pointer;
-    }
-  }
-
-  ol[role="list"],
-  ul[role="list"] {
-    list-style: none;
-    padding-inline: 0;
-  }
-
-  img {
-    display: block;
-    max-inline-size: 100%;
-  }
-
-  body.dark-mode {
-    background-color: var(--dark);
-
-    p,
-    li,
-    h1,
-    h2,
-    h3,
-    h4,
-    h5,
-    h6 {
-      color: #fff;
-    }
   }
 }
 
